@@ -1,6 +1,6 @@
-const path = require('path');
-const changeCase = require('change-case');
-const packageJson = require(path.resolve(process.cwd(), 'package.json'));
+const path = require('path')
+const changeCase = require('change-case')
+const packageJson = require(path.resolve(process.cwd(), 'package.json'))
 
 /**
  * Reads info from the package.json file.
@@ -12,7 +12,7 @@ const packageJson = require(path.resolve(process.cwd(), 'package.json'));
  *
  * @returns {*}
  */
-exports.package = (key) => packageJson[key];
+exports.package = (key) => packageJson[key]
 
 /**
  * Implements the library [change-case](https://github.com/blakeembrey/change-case).
@@ -26,14 +26,14 @@ exports.package = (key) => packageJson[key];
  * @returns {string}
  */
 exports.changeCase = (to, string) => {
-	if (to === 'title') {
-		to = 'capitalCase';
-	}
-	if (to.indexOf('Case') === -1) {
-		to += 'Case';
-	}
-	return changeCase[to](string);
-};
+  if (to === 'title') {
+    to = 'capitalCase'
+  }
+  if (to.indexOf('Case') === -1) {
+    to += 'Case'
+  }
+  return changeCase[to](string)
+}
 
 /**
  * Prefixes a string to the beginning of each line in the first string
@@ -45,7 +45,7 @@ exports.changeCase = (to, string) => {
  *
  * @returns {string}
  */
-exports.prefixLines = (string, replacer = '') => string ? replacer + string.replace(/[\r\n]/g, '$&' + replacer) : '';
+exports.prefixLines = (string, replacer = '') => string ? replacer + string.replace(/[\r\n]/g, '$&' + replacer) : ''
 
 /**
  * Finds an object in an array with a matching key: value
@@ -58,7 +58,7 @@ exports.prefixLines = (string, replacer = '') => string ? replacer + string.repl
  *
  * @returns {array}
  */
-exports.findBy = (array, key, value) => [array.find((item) => item[key] === value)].filter(Boolean);
+exports.findBy = (array, key, value) => [array.find((item) => item[key] === value)].filter(Boolean)
 
 /**
  * Calls string.replace
@@ -71,7 +71,7 @@ exports.findBy = (array, key, value) => [array.find((item) => item[key] === valu
  *
  * @returns {string}
  */
-exports.replace = (string = '', pattern, newString) => string.replace(pattern, newString);
+exports.replace = (string = '', pattern, newString) => string.replace(pattern, newString)
 
 /**
  * Determines if the provided string is truthy and is different than the string provided the previous time this function was called
@@ -82,9 +82,9 @@ exports.replace = (string = '', pattern, newString) => string.replace(pattern, n
  *
  * @returns {boolean}
  */
-let current = '';
-exports.isNew = function(string) {
-	const isNew = string !== current;
-	current = string;
-	return string && isNew;
-};
+let current = ''
+exports.isNew = function (string) {
+  const isNew = string !== current
+  current = string
+  return string && isNew
+}

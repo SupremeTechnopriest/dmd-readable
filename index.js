@@ -1,3 +1,4 @@
+const { join } = require('path')
 /**
  * @name Installation
  * @summary
@@ -34,9 +35,9 @@
  * This plugin also provides the following helper functions:
  *
  */
-module.exports = function() {
-	return {
-		partial: __dirname + "/partials/main/**/*.hbs",
-		helper: __dirname + "/helper.js"
-	};
-};
+module.exports = function () {
+  return {
+    partial: join(__dirname, '/partials/main/**/*.hbs'),
+    helper: join(__dirname, '/helper.js')
+  }
+}
